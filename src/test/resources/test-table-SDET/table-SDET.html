@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)https://vins-udemy.s3.amazonaws.com/java/html/java8-stream-table-price.html -->
+<html lang="en" data-lt-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>Java-For-SDET</title>
+<script src="./table-SDET_files/jquery.min.js.download"></script><script>
+$(document).ready(function() {
+
+
+	$('td.price').each(function(i, e){
+		e.innerText = parseInt(Math.random() * 1000);
+	});
+
+
+    $('input#result').click(function(){
+
+    	$(this).prop('disabled', true);
+    	var attempt = parseInt(window.localStorage.getItem('udemy-java-attempt'));
+		window.localStorage.setItem('udemy-java-attempt', ++attempt);
+
+    	var rows = $('table#prods tr');
+    	rows.sort(function(a, b){
+			var p1 = parseInt(a.querySelector('td.price') ? a.querySelector('td.price').innerText : "0")
+			var p2 = parseInt(b.querySelector('td.price') ? b.querySelector('td.price').innerText : "0");
+			return p1 - p2;
+		});
+		$(rows[1]).css('background-color', '#6ABF86');
+		if($(rows[1]).find('input').is(":checked")){
+			$('td#status').text("PASS");
+		}else{
+			$('td#status').text("FAIL");
+		}
+    })
+
+});
+</script></head>
+
+
+
+<body>
+<table border="1" width="80%" cellpadding="10" id="prods">
+	<tbody>
+		<tr>
+			<th>Buyer</th>
+			<th>Product</th>
+			<th>Price</th>
+			<th>&nbsp;</th>
+		</tr>
+		<tr>
+			<td>John</td>
+			<td>IPad</td>
+			<td class="price">930</td>
+			<td><input class="radio" name="radio" type="radio"></td>
+		</tr>
+		<tr>
+			<td>Veronica</td>
+			<td>IPhone</td>
+			<td class="price">350</td>
+			<td><input class="radio" name="radio" type="radio"></td>
+		</tr>
+		<tr>
+			<td>Michael</td>
+			<td>4KTV</td>
+			<td class="price">223</td>
+			<td><input class="radio" name="radio" type="radio"></td>
+		</tr>	
+		<tr>
+			<td>Kate</td>
+			<td>Macbook</td>
+			<td class="price">506</td>
+			<td><input class="radio" name="radio" type="radio"></td>
+		</tr>
+		<tr>
+			<td>Smith</td>
+			<td>Amazon Echo</td>
+			<td class="price">999</td>
+			<td><input class="radio" name="radio" type="radio"></td>
+		</tr>
+		<tr>
+			<td>Lawrence</td>
+			<td>Samsung Galaxy</td>
+			<td class="price">885</td>
+			<td><input class="radio" name="radio" type="radio"></td>
+		</tr>
+		<tr>
+			<td>Rose</td>
+			<td>Apple Watch</td>
+			<td class="price">404</td>
+			<td><input class="radio" name="radio" type="radio"></td>
+		</tr>
+		<tr>
+			<td>Sally</td>
+			<td>xbox</td>
+			<td class="price">935</td>
+			<td><input class="radio" name="radio" type="radio"></td>
+		</tr>
+		<tr>
+			<td>Anderson</td>
+			<td>Playstation 4</td>
+			<td class="price">486</td>
+			<td><input class="radio" name="radio" type="radio"></td>
+		</tr>
+	</tbody>
+</table><br>
+<input type="button" id="result" value=" Verify ">
+<br><br>
+<table border="1" width="40%" cellpadding="15">
+	<tbody><tr>
+		<td>Status</td>
+		<td id="status"></td>
+	</tr>
+</tbody></table>
+
+</body></html>

@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Lambda Java8 Stream" verbose="1" parallel="classes" preserve-order="true">
+    <test name="Testing">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="org.lambda.selenium.GoogleTests"/>
+        </classes>
+    </test>
+</suite>
