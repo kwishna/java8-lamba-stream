@@ -1,6 +1,10 @@
 package org.lambda.streams;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class FlatMaps {
     public static void main(String[] args) {
@@ -10,9 +14,13 @@ public class FlatMaps {
 
         List<List<Integer>> abc = List.of(a, b, c);
 
+        Function<Integer, Integer> SQUARED = num -> num * num;
+        Function<List<Integer>, Stream<Integer>> STREAM = Collection::stream;
+        Consumer<Integer> PRINT = System.out::println;
+
         abc.stream()
-                .flatMap(_l -> _l.stream())
-                .map(_i -> _i * _i)
-                .forEach(System.out::println);
+                .flatMap(STREAM)
+                .map(SQUARED)
+                .forEach(PRINT);
     }
 }

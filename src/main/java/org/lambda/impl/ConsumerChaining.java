@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 
 public class ConsumerChaining {
 
-    private static Path LOG_FILE = Path.of("./logs/logger.txt");
+    private static final Path LOG_FILE = Path.of("./logs/logger.txt");
 
     public static void main(String[] args) {
         Consumer<String> outLogger = System.out::println;
